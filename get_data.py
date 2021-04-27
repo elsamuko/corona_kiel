@@ -6,7 +6,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
-import matplotlib.pyplot as plt
+import plotter
 
 
 def enter_by_selector(driver, selector: str, text: str) -> None:
@@ -31,15 +31,17 @@ driver.find_element_by_id(
     "ContentPlaceHolderMain_ContentPlaceHolderAltGridFull_ButtonStandardFilter").click()
 time.sleep(5)
 
+# enter COVID
 enter_by_selector(driver,
                   "#ContentPlaceHolderMain_ContentPlaceHolderAltGridFull_RepeaterFilter_RepeaterFilterLevel_1_ListBoxFilterLevelMembers_0_chosen > ul:nth-child(1) > li:nth-child(1) > input:nth-child(1)",
                   "COVID-19")
 
+# enter city
 enter_by_selector(driver,
                   "#ContentPlaceHolderMain_ContentPlaceHolderAltGridFull_RepeaterFilter_RepeaterFilterLevel_3_ListBoxFilterLevelMembers_2_chosen > ul:nth-child(1) > li:nth-child(1) > input:nth-child(1)",
                   "City of Kiel")
 
-
+# scroll down
 driver.execute_script("window.scrollBy(0,500)")
 
 # age stratification in 5 year intervals
@@ -54,6 +56,7 @@ click_by_selector(driver,
                   "/html/body/form[1]/div[3]/div[1]/div[2]/div/div[2]/div/div/div[3]/div[3]/div/div/ul/li[6]")
 time.sleep(3)
 
+# scroll down
 driver.execute_script("window.scrollBy(0,500)")
 
 # incidence
@@ -61,6 +64,7 @@ driver.find_element_by_id(
     "ContentPlaceHolderMain_ContentPlaceHolderAltGridFull_CheckBoxIncidence").click()
 time.sleep(3)
 
+# get data
 table = driver.find_element_by_id(
     "ContentPlaceHolderMain_ContentPlaceHolderAltGridFull_GridViewResult").text
 
@@ -87,5 +91,5 @@ print(keys)
 print(lines)
 print(data)
 
-plt.matshow(data)
-plt.show()
+# plot data
+plotter.plot(data)
