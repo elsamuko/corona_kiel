@@ -9,10 +9,10 @@ def plot(data):
     ages = len(data)
     weeks = len(data[0])
 
-    fig = plt.figure(figsize=(15, 10))
+    fig = plt.figure(figsize=(15, 5))
     ax = fig.add_subplot()
     im = ax.matshow(data, cmap='rainbow')
-    fig.colorbar(im, shrink=0.4)
+    fig.colorbar(im)
 
     age_labels = [str(5+5*x) for x in range(ages)]
     age_labels[-1] = "80+"
@@ -31,5 +31,5 @@ def plot(data):
 
 
 if __name__ == "__main__":
-    data = np.random.random((18, 50))
+    data = np.random.random((17, 57))
     plot(data)
