@@ -12,7 +12,8 @@ def plot(data):
     fig = plt.figure(figsize=(15, 5))
     ax = fig.add_subplot()
     im = ax.matshow(data, cmap='rainbow')
-    fig.colorbar(im)
+    bar = fig.colorbar(im)
+    bar.set_label('Inzidenz')
 
     age_labels = [str(5+5*x) for x in range(ages)]
     age_labels[-1] = "80+"
@@ -20,11 +21,13 @@ def plot(data):
                    labelright=True, labelleft=True)
     ax.set_yticks(np.arange(ages))
     ax.set_yticklabels(age_labels)
+    ax.set_ylabel('Alter')
 
     _, week, _ = datetime.date.today().isocalendar()
     week_labels = [str(1+(53+x-weeks+week) % 53) for x in range(weeks)]
-    ax.tick_params(axis="x", top=True, labeltop=True)
+    ax.tick_params(axis="x", top=True, labeltop=True, labelbottom=True)
     ax.set_xticks(np.arange(weeks))
+    ax.set_xlabel('Woche')
     ax.set_xticklabels(week_labels)
 
     plt.savefig("plot.png")
