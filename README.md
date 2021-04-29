@@ -3,7 +3,7 @@
 Fetch the latest Corona numbers from Kiel and plot them by 5 year age interval
 
 ## Example:
-<img src="plot.png" width="450">
+<img src="plot.png" width="600">
 
 ## Data
 
