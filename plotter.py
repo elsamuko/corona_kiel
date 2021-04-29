@@ -14,7 +14,8 @@ def plot(data):
     im = ax.matshow(data, cmap='rainbow')
     fig.colorbar(im, shrink=0.4)
 
-    age_labels = [str(5*x) for x in range(ages)]
+    age_labels = [str(5+5*x) for x in range(ages)]
+    age_labels[-1] = "80+"
     ax.tick_params(axis="y", left=True, right=True,
                    labelright=True, labelleft=True)
     ax.set_yticks(np.arange(ages))
