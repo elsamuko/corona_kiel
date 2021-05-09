@@ -25,7 +25,10 @@ def click_by_selector(driver, dropdown: str, element: str) -> None:
     time.sleep(3)
 
 
-driver = webdriver.Firefox()
+# get browser
+fireFoxOptions = webdriver.FirefoxOptions()
+fireFoxOptions.headless = True
+driver = webdriver.Firefox(options=fireFoxOptions)
 driver.get("https://survstat.rki.de/Content/Query/Create.aspx")
 
 # reset to standard filter
