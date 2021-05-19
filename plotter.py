@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
+import writer
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.colors as clr
 import datetime
 
 
@@ -11,7 +13,7 @@ def plot(data):
 
     fig = plt.figure(figsize=(15, 5))
     ax = fig.add_subplot()
-    im = ax.matshow(data, cmap='rainbow')
+    im = ax.matshow(data, cmap='rainbow', norm=clr.PowerNorm(gamma=0.7))
     bar = fig.colorbar(im)
     bar.set_label('Inzidenz')
 
@@ -34,5 +36,5 @@ def plot(data):
 
 
 if __name__ == "__main__":
-    data = np.random.random((17, 57))
+    data = writer.read_data()
     plot(data)
