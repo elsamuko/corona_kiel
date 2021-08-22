@@ -9,6 +9,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 import plotter
 import writer
+import os
 
 
 def enter_by_selector(driver, selector: str, text: str) -> None:
@@ -24,6 +25,9 @@ def click_by_selector(driver, dropdown: str, element: str) -> None:
     driver.find_element_by_xpath(element).click()
     time.sleep(3)
 
+
+# show english site
+os.environ["LANG"] = "en_US.UTF-8"
 
 # get browser
 fireFoxOptions = webdriver.FirefoxOptions()
