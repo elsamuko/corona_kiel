@@ -46,9 +46,11 @@ enter_by_selector(driver,
                   "COVID-19")
 
 # enter city
+county = "City of Kiel"
+# county = "Görlitz County"
 enter_by_selector(driver,
                   "#ContentPlaceHolderMain_ContentPlaceHolderAltGridFull_RepeaterFilter_RepeaterFilterLevel_3_ListBoxFilterLevelMembers_2_chosen > ul:nth-child(1) > li:nth-child(1) > input:nth-child(1)",
-                  "City of Kiel")
+                  county)
 
 # scroll down
 driver.execute_script("window.scrollBy(0,500)")
@@ -91,7 +93,7 @@ print(f"{n_rows}x{n_columns}")
 def data_at(c, r):
     el_table = f"/html/body/form[1]/div[3]/div[1]/div[2]/div/div[2]/div/div/div[5]/div/div/table/tbody/tr[{3+r}]/td[{2+c}]"
     el_data = driver.find_element_by_xpath(el_table).text
-    return float(el_data) if el_data else 0.0
+    return float(el_data.replace(',','')) if el_data else 0.0
 
 
 data = [[data_at(c, r) for c in range(n_columns+1)] for r in range(n_rows-1)]
