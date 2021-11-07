@@ -58,13 +58,13 @@ driver.execute_script("window.scrollBy(0,500)")
 # age stratification in 5 year intervals
 click_by_selector(driver,
                   "/html/body/form[1]/div[3]/div[1]/div[2]/div/div[2]/div/div/div[3]/div[1]/div/a/span",
-                  "/html/body/form[1]/div[3]/div[1]/div[2]/div/div[2]/div/div/div[3]/div[1]/div/div/ul/li[21]")
+                  "/html/body/form[1]/div[3]/div[1]/div[2]/div/div[2]/div/div/div[3]/div[1]/div/div/ul/li[18]")
 time.sleep(3)
 
 # year and week of notification
 click_by_selector(driver,
                   "/html/body/form[1]/div[3]/div[1]/div[2]/div/div[2]/div/div/div[3]/div[3]/div/a/span",
-                  "/html/body/form[1]/div[3]/div[1]/div[2]/div/div[2]/div/div/div[3]/div[3]/div/div/ul/li[6]")
+                  "/html/body/form[1]/div[3]/div[1]/div[2]/div/div[2]/div/div/div[3]/div[3]/div/div/ul/li[9]")
 time.sleep(3)
 
 # scroll down
