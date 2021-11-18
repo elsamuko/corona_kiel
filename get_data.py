@@ -10,6 +10,7 @@ from selenium.webdriver.common.keys import Keys
 import plotter
 import writer
 import os
+import numpy as np
 
 
 def enter_by_selector(driver, selector: str, text: str) -> None:
@@ -61,10 +62,10 @@ click_by_selector(driver,
                   "/html/body/form[1]/div[3]/div[1]/div[2]/div/div[2]/div/div/div[3]/div[1]/div/div/ul/li[18]")
 time.sleep(3)
 
-# year and week of notification
+# season starting with week 27
 click_by_selector(driver,
                   "/html/body/form[1]/div[3]/div[1]/div[2]/div/div[2]/div/div/div[3]/div[3]/div/a/span",
-                  "/html/body/form[1]/div[3]/div[1]/div[2]/div/div[2]/div/div/div[3]/div[3]/div/div/ul/li[9]")
+                  "/html/body/form[1]/div[3]/div[1]/div[2]/div/div[2]/div/div/div[3]/div[3]/div/div/ul/li[7]")
 time.sleep(3)
 
 # scroll down
@@ -102,8 +103,11 @@ print(keys)
 print(lines)
 # print(data)
 
+now = datetime.date.today()
+_, week, day = now.isocalendar()
+data = np.roll(data, 27-week, axis=1)
+
 # interpolate last column to full week
-_, _, day = datetime.date.today().isocalendar()
 for r in range(len(data)):
     data[r][-1] = round(data[r][-1] * 7/day, 2)
 
