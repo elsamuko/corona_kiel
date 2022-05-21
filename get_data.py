@@ -107,6 +107,10 @@ now = datetime.date.today()
 _, week, day = now.isocalendar()
 data = np.roll(data, 27-week, axis=1)
 
+# interpolate last column to full week
+for r in range(len(data)):
+    data[r][-1] = round(data[r][-1] * 7/day, 2)
+
 # write to CSV
 writer.dump_data(data)
 
